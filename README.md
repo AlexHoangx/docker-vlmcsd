@@ -36,7 +36,25 @@ Now (thanks to embii74) vlmcsd process send logs to docker.
 >cscript ospp.vbs /setprt:PORT  
 >cscript ospp.vbs /inpkey:xxxxx-xxxxx-xxxxx-xxxxx-xxxxx  
 >cscript ospp.vbs /act  
->cscript ospp.vbs /dstatusall  
+>cscript ospp.vbs /dstatusall
+
+## Convert Office Retails to Volume
+open CMD with administrator priviled
+>if exist "%ProgramFiles%\Microsoft Office\Office16\ospp.vbs" cd /d "%ProgramFiles%\Microsoft Office\Office16"
+>if exist "%ProgramFiles(x86)%\Microsoft Office\Office16\ospp.vbs" cd /d "%ProgramFiles(x86)%\Microsoft Office\Office16"
+>for /f %i in ('dir /b ..\root\Licenses16\ProPlus2021VL_MAK*.xrm-ms') do cscript ospp.vbs /inslic:"..\root\Licenses16\%i"
+>for /f %i in ('dir /b ..\root\Licenses16\ProPlus2019VL_MAK*.xrm-ms') do cscript ospp.vbs /inslic:"..\root\Licenses16\%i"
+>for /f %i in ('dir /b ..\root\Licenses16\ProPlusVL_MAK*.xrm-ms') do cscript ospp.vbs /inslic:"..\root\Licenses16\%i"
+>exit
+
+>cd /d %ProgramFiles%\Microsoft Office\Office16
+>cd /d %ProgramFiles(x86)%\Microsoft Office\Office16
+>for /f %x in ('dir /b ..\root\Licenses16\ProPlus2021VL*.xrm-ms') do cscript ospp.vbs /inslic:"..\root\Licenses16\%x"
+>cscript ospp.vbs /setprt:1688
+>cscript ospp.vbs /inpkey:YNBCW-CXH2J-TT92G-X7G46-KTR2X
+>cscript ospp.vbs /sethst:localhost
+>cscript ospp.vbs /act
+
 
 ## Sources
 > https://forums.mydigitallife.info/threads/50234-Emulated-KMS-Servers-on-non-Windows-platforms  
